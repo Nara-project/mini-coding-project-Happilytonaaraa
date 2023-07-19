@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulir Konsultasi Kesehatan</title>
+</head>
+<body>
+  <h1>Formulir Konsultasi Kesehatan</h1>
+
+  <form id="formKonsultasi" onsubmit="submitForm(event)">
+    <label for="nama">Nama:</label>
+    <input type="text" id="nama" required><br>
+
+    <label for="usia">Usia:</label>
+    <input type="number" id="usia" required><br>
+
+    <label for="keluhan">Keluhan:</label>
+    <textarea id="keluhan" rows="4" required></textarea><br>
+
+    <button type="submit">Kirim</button>
+  </form>
+
+  <div id="hasilKonsultasi"></div>
+
+  <script>
+    function submitForm(event) {
+      event.preventDefault();
+
+      // Mendapatkan nilai input
+      var nama = document.getElementById('nama').value;
+      var usia = document.getElementById('usia').value;
+      var keluhan = document.getElementById('keluhan').value;
+
+      // Menampilkan hasil konsultasi
+      var hasilKonsultasi = "Terima kasih, " + nama + "!<br>";
+      hasilKonsultasi += "Konsultasi Anda telah berhasil dikirim.<br>";
+      hasilKonsultasi += "Berikut adalah ringkasan informasi Anda:<br>";
+      hasilKonsultasi += "Nama: " + nama + "<br>";
+      hasilKonsultasi += "Usia: " + usia + "<br>";
+      hasilKonsultasi += "Keluhan: " + keluhan + "<br>";
+
+      document.getElementById('hasilKonsultasi').innerHTML = hasilKonsultasi;
+
+      // Mengosongkan nilai input setelah pengiriman formulir
+      document.getElementById('nama').value = '';
+      document.getElementById('usia').value = '';
+      document.getElementById('keluhan').value = '';
+    }
+  </script>
+</body>
+</html>
